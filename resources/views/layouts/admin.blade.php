@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="surfside media" />
+    <meta name="author" content="prince bhatt" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animation.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
@@ -452,7 +452,7 @@
                     <div class="main-content">
                         @yield('content')
                         <div class="bottom-page">
-                            <div class="body-text">Copyright © 2024 SurfsideMedia</div>
+                            <div class="body-text">Copyright © 2024 Prince Bhatt</div>
                         </div>
                     </div>
 
