@@ -72,7 +72,7 @@
                                             </a>
                                         </li>
                                         <li class="sub-menu-item">
-                                            <a href="products.html" class="">
+                                            <a href="{{ route('admin.products')}}" class="">
                                                 <div class="text">Products</div>
                                             </a>
                                         </li>
@@ -108,7 +108,7 @@
                                             </a>
                                         </li>
                                         <li class="sub-menu-item">
-                                            <a href="categories.html" class="">
+                                            <a href="{{ route('admin.categories')}}" class="">
                                                 <div class="text">Categories</div>
                                             </a>
                                         </li>
