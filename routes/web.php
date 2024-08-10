@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AuthAdmin;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
+Route::get('/shop/{product_slug}',[ShopController::class,'product_details'])->name('shop.product.detail');
+Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+Route::get('/cart/checkout',[CartController::class,'checkout'])->name('cart.checkout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
@@ -24,6 +30,7 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::get('/admin/brand/edit/{id}', [AdminController::class, 'brand_edit'])->name('admin.brand.edit');
     Route::post('/admin/brand/update', [AdminController::class, 'brand_update'])->name('admin.brand.update');
     Route::post('/admin/brand/delete/{id}', [AdminController::class, 'brand_delete'])->name('admin.brand.delete');
+
     Route::get('/admin/categories', [AdminController::class, 'categories'])->name('admin.categories');
     Route::get('/admin/category/add', [AdminController::class, 'add_Category'])->name('admin.category.add');
     Route::post('/admin/category/store', [AdminController::class, 'category_store'])->name('admin.category.store');
