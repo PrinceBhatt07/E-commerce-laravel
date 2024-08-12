@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -15,8 +16,12 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/shop',[ShopController::class,'index'])->name('shop.index');
 Route::get('/shop/{product_slug}',[ShopController::class,'product_details'])->name('shop.product.detail');
+
+
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 Route::get('/cart/checkout',[CartController::class,'checkout'])->name('cart.checkout');
+
+Route::get('/about',[AboutController::class,'index'])->name('about.index');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');
@@ -44,4 +49,7 @@ Route::middleware(['auth',AuthAdmin::class])->group(function () {
     Route::get('/admin/product/edit/{id}',[AdminController::class,'product_edit'])->name('admin.product.edit');
     Route::post('/admin/product/update',[AdminController::class,'product_update'])->name('admin.product.update');
     Route::post('/admin/product/delete/{id}',[AdminController::class,'product_delete'])->name('admin.product.delete');
+
+    Route::get('/admin/coupons',[AdminController::class,'coupons'])->name('admin.coupons');
+    Route::get('/admin/coupons/add',[AdminController::class,'coupons_add'])->name('admin.coupons.add');
 });

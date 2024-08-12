@@ -421,4 +421,12 @@ class AdminController extends Controller
         $product->delete();
         return redirect()->route('admin.products')->with('status', 'Product has been deleted successfully!');
     }
+
+    public function coupons(){
+        return view('admin.coupons');
+    }
+
+    public function coupons_add(){
+        return view('admin.coupons-add');
+    }
 }
