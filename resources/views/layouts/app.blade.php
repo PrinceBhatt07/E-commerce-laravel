@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css')}}" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css" rel="stylesheet">
     @stack('styles')
 </head>
 
@@ -243,7 +244,7 @@
                             <a href="{{route('about.index')}}" class="navigation__link">About</a>
                         </li>
                         <li class="navigation__item">
-                            <a href="contact.html" class="navigation__link">Contact</a>
+                            <a href="{{ route('contact.index')}}" class="navigation__link">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -325,7 +326,7 @@
                             <a href="{{route('about.index')}}" class="navigation__link">About</a>
                         </li>
                         <li class="navigation__item">
-                            <a href="contact.html" class="navigation__link">Contact</a>
+                            <a href="{{ route('contact.index')}}" class="navigation__link">Contact</a>
                         </li>
                     </ul>
                 </nav>
@@ -474,7 +475,7 @@
                         <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Careers</a></li>
                         <li class="sub-menu__item"><a href="#" class="menu-link menu-link_us-s">Affiliates</a></li>
                         <li class="sub-menu__item"><a href="blog_list1.html" class="menu-link menu-link_us-s">Blog</a></li>
-                        <li class="sub-menu__item"><a href="contact-2.html" class="menu-link menu-link_us-s">Contact Us</a></li>
+                        <li class="sub-menu__item"><a href="{{ route('contact.index')}}" class="menu-link menu-link_us-s">Contact Us</a></li>
                     </ul>
                 </div>
 
@@ -570,6 +571,7 @@
     <script src="{{ asset('assets/js/plugins/swiper.min.js')}}"></script>
     <script src="{{ asset('assets/js/plugins/countdown.js')}}"></script>
     <script src="{{ asset('assets/js/theme.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.all.min.js"></script>
     @stack('scripts')
 </body>
 

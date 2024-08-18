@@ -13,7 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     {{ __('You are logged in!') }}
                 </div>
             </div>
@@ -21,3 +20,17 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+@if (session('status'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('status') }}",
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+@endif
+@endpush

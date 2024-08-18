@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
@@ -19,9 +20,16 @@ Route::get('/shop/{product_slug}',[ShopController::class,'product_details'])->na
 
 
 Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+Route::post('/cart/add',[CartController::class,'add_to_cart'])->name('cart.add');
+Route::post('/cart/increase_quantity/{rowId}',[CartController::class,'increase_cart_quantity'])->name('cart.qty.increase');
+Route::post('/cart/decrease_quantity/{rowId}',[CartController::class,'decrease_cart_quantity'])->name('cart.qty.decrease');
 Route::get('/cart/checkout',[CartController::class,'checkout'])->name('cart.checkout');
 
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
+
+Route::get('/contact',[ContactController::class,'index'])->name('contact.index');
+Route::post('/contact/store',[ContactController::class,'store'])->name('contact.store');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/account-dashboard', [UserController::class, 'index'])->name('user.index');

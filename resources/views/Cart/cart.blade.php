@@ -28,7 +28,7 @@
         </a>
       </div>
       <div class="shopping-cart">
-        @if (count($item) > 0)          
+        @if ($items->count() > 0)          
         <div class="cart-table__wrapper">
           <table class="cart-table">
             <thead>
@@ -46,7 +46,7 @@
               <tr>
                 <td>
                   <div class="shopping-cart__product-item">
-                    <img loading="lazy" src="{{ asset('uploads/products/thumbnails')}}/{{$item->model->image')}}" width="120" height="120" alt="{{ $item->name}}" />
+                    <img loading="lazy" src="{{ asset('uploads/products/thumbnails')}}/{{$item->model->image}}" width="120" height="120" alt="{{ $item->name}}" />
                   </div>
                 </td>
                 <td>
@@ -63,9 +63,16 @@
                 </td>
                 <td>
                   <div class="qty-control position-relative">
-                    <input type="number" name="quantity" value="3" min="1" class="qty-control__number text-center">
+                    <input type="number" name="quantity" value="{{$item->qty}}" min="1" class="qty-control__number text-center">
+                    <form action="{{ route('cart.qty.decrease',['rowId'=>$item->rowId])}}" method="post">
+                    @csrf  
                     <div class="qty-control__reduce">-</div>
-                    <div class="qty-control__increase">+</div>
+                    </form>
+
+                    <form action="{{ route('cart.qty.increase',['rowId'=>$item->rowId])}}" method="post">
+                      @csrf
+                      <div class="qty-control__increase">+</div>
+                    </form>
                   </div>
                 </td>
                 <td>
@@ -100,7 +107,7 @@
                 <tbody>
                   <tr>
                     <th>Subtotal</th>
-                    <td>{{ Cart::instance('cart')->subtotal()}}</td>
+                    <td>${{Cart::instance('cart')->subtotal()}}</td>
                   </tr>
                   <tr>
                     <th>Shipping</th>
@@ -136,3 +143,15 @@
     </section>
   </main>
 @endsection
+@push('scripts')
+<script>
+  $(function(){
+    $('.qty-control__increase').on('click',function(){
+      $(this).closest('form').submit();
+    });
+    $('.qty-control__reduce').on('click',function(){
+      $(this).closest('form').submit();
+    });
+  });
+  </script>
+@endpush
