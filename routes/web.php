@@ -23,6 +23,8 @@ Route::get('/cart',[CartController::class,'index'])->name('cart.index');
 Route::post('/cart/add',[CartController::class,'add_to_cart'])->name('cart.add');
 Route::post('/cart/increase_quantity/{rowId}',[CartController::class,'increase_cart_quantity'])->name('cart.qty.increase');
 Route::post('/cart/decrease_quantity/{rowId}',[CartController::class,'decrease_cart_quantity'])->name('cart.qty.decrease');
+Route::post('/cart/remove/{rowId}',[CartController::class,'remove_from_cart'])->name('cart.remove.item');
+
 Route::get('/cart/checkout',[CartController::class,'checkout'])->name('cart.checkout');
 
 Route::get('/about',[AboutController::class,'index'])->name('about.index');
